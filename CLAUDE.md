@@ -147,10 +147,10 @@ Legenda: ☐ nie rozpoczęte · 🔶 tekst wyciągnięty · 🔷 ustrukturyzowan
 | Ch.4 | Field Skills | 134 – 225 | ✅ |
 | Ch.5 | Employment | 226 – 265 | ✅ |
 | Ch.6 | Sniper Operations in Urban Terrain | 266 – 290 | ✅ |
-| App.A | Weights, Measures, and Conversion Tables | 291 – 295 | ☐ (kandydat na kalkulator) |
-| App.B | Mission-Essential Tasks List | 296 – 305 | ☐ |
-| App.C | Sustainment Program | 306 – 321 | ☐ |
-| App.D | Mission Packing List | 322 – 326 | ☐ |
+| App.A | Weights, Measures, and Conversion Tables | 291 – 295 | ✅ (kandydat na kalkulator) |
+| App.B | Mission-Essential Tasks List | 296 – 305 | ✅ |
+| App.C | Sustainment Program | 306 – 321 | ✅ |
+| App.D | Mission Packing List | 322 – 326 | ✅ |
 | App.E | M82A1 Caliber .50 Sniper Weapon System | 327 – 335 | ☐ |
 | App.F | Foreign/Nonstandard Sniper Weapon Systems Data | 336 – 352 | ☐ |
 | App.G | Sniper Rifle Telescopes | 353 – 363 | ☐ |

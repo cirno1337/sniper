@@ -5,8 +5,12 @@ import { ch03 } from "./ch03";
 import { ch04 } from "./ch04";
 import { ch05 } from "./ch05";
 import { ch06 } from "./ch06";
+import { appA } from "./app-a";
+import { appB } from "./app-b";
+import { appC } from "./app-c";
+import { appD } from "./app-d";
 
-export const chapters: Chapter[] = [ch01, ch02, ch03, ch04, ch05, ch06];
+export const chapters: Chapter[] = [ch01, ch02, ch03, ch04, ch05, ch06, appA, appB, appC, appD];
 
 export function getChapter(id: string): Chapter | undefined {
   return chapters.find((c) => c.id === id);
