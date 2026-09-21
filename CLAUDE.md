@@ -107,6 +107,14 @@ sniper/
 6. Podłączenie do routera, wizualna weryfikacja w przeglądarce (dev server)
 7. Odhaczenie w tabeli statusu poniżej
 
+**Automatyczna walidacja treści:** `node scripts/validate-content.mjs` przechodzi
+po wszystkich plikach w `src/content/` (bez potrzeby przeglądarki/dev servera)
+i sprawdza: unikalność ID (rozdział/sekcja/pytanie/fiszka), czy każdy
+`correctIndex` w quizie mieści się w liczbie opcji, oraz czy każda ścieżka
+`figures[].src` faktycznie istnieje w `public/`. Uruchamiać po każdej większej
+zmianie treści — szybki sanity check niezależny od tego, czy rozszerzenie
+Chrome jest akurat podłączone.
+
 ## Grafiki uzupełniające z internetu
 
 Oprócz rysunków/schematów wyciąganych z samego PDF-a, lekcje uzupełniamy o
