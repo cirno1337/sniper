@@ -162,16 +162,26 @@ Legenda: ☐ nie rozpoczęte · 🔶 tekst wyciągnięty · 🔷 ustrukturyzowan
 | App.M | Sniper Team Debriefing Format | 431 – 433 | ✅ |
 | App.N | Sniper Range Complex | 434 – 436 | ✅ |
 | App.O | Aerial Platforms | 437 – 453 | ✅ |
-| — | Glossary | 454 – 466 | ☐ (osobna przeszukiwalna strona) |
-| — | Bibliography | 467 – 469 | ☐ (statyczna lista źródeł, niski priorytet) |
+| — | Glossary | 454 – 466 | ✅ |
+| — | Bibliography | 467 – 469 | ✅ |
 | — | Index | 470 – 474 | pominięty celowo (niepotrzebny w aplikacji szkoleniowej) |
 
 Powyższe zakresy stron PDF są zweryfikowane (`pdftotext -f <start> -l <start>`
 pokazuje nagłówek rozdziału/dodatku na pierwszej stronie zakresu). Używać ich
 bezpośrednio zamiast ponownie przeszukiwać dokument.
 
-**Wszystkie sześć głównych rozdziałów (1-6) i wszystkie dodatki (A-O) są
-ukończone.** Pozostaje wyłącznie Glosariusz/Bibliografia, a potem Faza 5
+**Cała zaplanowana treść z FM 3-05.222 jest ukończona**: wszystkie sześć
+głównych rozdziałów (1-6), wszystkie dodatki (A-O) oraz Glosariusz i
+Bibliografia (Index celowo pominięty). Fazy 0-4 zamknięte. Pozostaje:
+- **Faza 5 — funkcje przekrojowe**: egzamin końcowy losujący pytania ze
+  wszystkich rozdziałów, zbiorczy widok fiszek ze wszystkich rozdziałów,
+  dashboard postępu na stronie głównej, oraz trzy kalkulatory/narzędzia z
+  danych już obecnych w treści: konwerter jednostek (Appendix A), kalkulator
+  balistyczny (Appendix H + sekcja Ballistics w rozdz. 3), pomoc do
+  szacowania odległości (Appendix J + sekcja Range Estimation w rozdz. 4).
+- **Faza 6 — polish**: responsywność mobile, dostępność (a11y), wyszukiwarka
+  pełnotekstowa po treści lekcji (tryb ciemny jest już domyślny/jedyny —
+  sprawdzić, czy to wystarczające, czy dodać przełącznik jasnego motywu).
 (funkcje przekrojowe: egzamin końcowy, kalkulatory, dashboard postępu).
 
 ## Funkcje aplikacji
