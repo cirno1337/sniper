@@ -155,10 +155,10 @@ Legenda: ☐ nie rozpoczęte · 🔶 tekst wyciągnięty · 🔷 ustrukturyzowan
 | App.F | Foreign/Nonstandard Sniper Weapon Systems Data | 336 – 352 | ✅ |
 | App.G | Sniper Rifle Telescopes | 353 – 363 | ✅ |
 | App.H | Ballistics Chart | 364 – 381 | ✅ (kandydat na kalkulator) |
-| App.I | Sniper Training Exercises | 382 – 387 | ☐ |
-| App.J | Range Estimation Table | 388 – 389 | ☐ (kandydat na kalkulator) |
-| App.K | Sniper's Logbook | 390 – 426 | ☐ (głównie puste formularze — opisać jako referencję, nie przepisywać pustych tabel) |
-| App.L | Tricks of the Trade | 427 – 430 | ☐ |
+| App.I | Sniper Training Exercises | 382 – 387 | ✅ |
+| App.J | Range Estimation Table | 388 – 389 | ✅ (kandydat na kalkulator) |
+| App.K | Sniper's Logbook | 390 – 426 | ✅ (opisany jako referencja, bez przepisywania pustych formularzy) |
+| App.L | Tricks of the Trade | 427 – 430 | ✅ |
 | App.M | Sniper Team Debriefing Format | 431 – 433 | ☐ |
 | App.N | Sniper Range Complex | 434 – 436 | ☐ |
 | App.O | Aerial Platforms | 437 – 453 | ☐ |
