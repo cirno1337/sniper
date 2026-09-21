@@ -145,7 +145,7 @@ Legenda: ☐ nie rozpoczęte · 🔶 tekst wyciągnięty · 🔷 ustrukturyzowan
 |---|-------|-------------------|--------|
 | Ch.1 | The Special Forces Sniper | 6 – 12 | ✅ |
 | Ch.2 | Equipment | 13 – 53 | ✅ |
-| Ch.3 | Marksmanship Training | 54 – 133 | ☐ |
+| Ch.3 | Marksmanship Training | 54 – 133 | ✅ |
 | Ch.4 | Field Skills | 134 – 225 | ☐ |
 | Ch.5 | Employment | 226 – 265 | ☐ |
 | Ch.6 | Sniper Operations in Urban Terrain | 266 – 290 | ☐ |
