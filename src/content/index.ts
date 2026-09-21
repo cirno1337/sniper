@@ -17,10 +17,13 @@ import { appI } from "./app-i";
 import { appJ } from "./app-j";
 import { appK } from "./app-k";
 import { appL } from "./app-l";
+import { appM } from "./app-m";
+import { appN } from "./app-n";
+import { appO } from "./app-o";
 
 export const chapters: Chapter[] = [
   ch01, ch02, ch03, ch04, ch05, ch06,
-  appA, appB, appC, appD, appE, appF, appG, appH, appI, appJ, appK, appL,
+  appA, appB, appC, appD, appE, appF, appG, appH, appI, appJ, appK, appL, appM, appN, appO,
 ];
 
 export function getChapter(id: string): Chapter | undefined {

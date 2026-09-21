@@ -159,9 +159,9 @@ Legenda: ☐ nie rozpoczęte · 🔶 tekst wyciągnięty · 🔷 ustrukturyzowan
 | App.J | Range Estimation Table | 388 – 389 | ✅ (kandydat na kalkulator) |
 | App.K | Sniper's Logbook | 390 – 426 | ✅ (opisany jako referencja, bez przepisywania pustych formularzy) |
 | App.L | Tricks of the Trade | 427 – 430 | ✅ |
-| App.M | Sniper Team Debriefing Format | 431 – 433 | ☐ |
-| App.N | Sniper Range Complex | 434 – 436 | ☐ |
-| App.O | Aerial Platforms | 437 – 453 | ☐ |
+| App.M | Sniper Team Debriefing Format | 431 – 433 | ✅ |
+| App.N | Sniper Range Complex | 434 – 436 | ✅ |
+| App.O | Aerial Platforms | 437 – 453 | ✅ |
 | — | Glossary | 454 – 466 | ☐ (osobna przeszukiwalna strona) |
 | — | Bibliography | 467 – 469 | ☐ (statyczna lista źródeł, niski priorytet) |
 | — | Index | 470 – 474 | pominięty celowo (niepotrzebny w aplikacji szkoleniowej) |
@@ -170,8 +170,9 @@ Powyższe zakresy stron PDF są zweryfikowane (`pdftotext -f <start> -l <start>`
 pokazuje nagłówek rozdziału/dodatku na pierwszej stronie zakresu). Używać ich
 bezpośrednio zamiast ponownie przeszukiwać dokument.
 
-**Wszystkie sześć głównych rozdziałów (1-6) jest ukończonych.** Pozostała
-praca to wyłącznie Dodatki A-O oraz Glosariusz/Bibliografia (Faza 3-4 planu).
+**Wszystkie sześć głównych rozdziałów (1-6) i wszystkie dodatki (A-O) są
+ukończone.** Pozostaje wyłącznie Glosariusz/Bibliografia, a potem Faza 5
+(funkcje przekrojowe: egzamin końcowy, kalkulatory, dashboard postępu).
 
 ## Funkcje aplikacji
 
