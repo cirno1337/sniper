@@ -151,10 +151,10 @@ Legenda: ☐ nie rozpoczęte · 🔶 tekst wyciągnięty · 🔷 ustrukturyzowan
 | App.B | Mission-Essential Tasks List | 296 – 305 | ✅ |
 | App.C | Sustainment Program | 306 – 321 | ✅ |
 | App.D | Mission Packing List | 322 – 326 | ✅ |
-| App.E | M82A1 Caliber .50 Sniper Weapon System | 327 – 335 | ☐ |
-| App.F | Foreign/Nonstandard Sniper Weapon Systems Data | 336 – 352 | ☐ |
-| App.G | Sniper Rifle Telescopes | 353 – 363 | ☐ |
-| App.H | Ballistics Chart | 364 – 381 | ☐ (kandydat na kalkulator) |
+| App.E | M82A1 Caliber .50 Sniper Weapon System | 327 – 335 | ✅ |
+| App.F | Foreign/Nonstandard Sniper Weapon Systems Data | 336 – 352 | ✅ |
+| App.G | Sniper Rifle Telescopes | 353 – 363 | ✅ |
+| App.H | Ballistics Chart | 364 – 381 | ✅ (kandydat na kalkulator) |
 | App.I | Sniper Training Exercises | 382 – 387 | ☐ |
 | App.J | Range Estimation Table | 388 – 389 | ☐ (kandydat na kalkulator) |
 | App.K | Sniper's Logbook | 390 – 426 | ☐ (głównie puste formularze — opisać jako referencję, nie przepisywać pustych tabel) |

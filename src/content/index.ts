@@ -9,8 +9,15 @@ import { appA } from "./app-a";
 import { appB } from "./app-b";
 import { appC } from "./app-c";
 import { appD } from "./app-d";
+import { appE } from "./app-e";
+import { appF } from "./app-f";
+import { appG } from "./app-g";
+import { appH } from "./app-h";
 
-export const chapters: Chapter[] = [ch01, ch02, ch03, ch04, ch05, ch06, appA, appB, appC, appD];
+export const chapters: Chapter[] = [
+  ch01, ch02, ch03, ch04, ch05, ch06,
+  appA, appB, appC, appD, appE, appF, appG, appH,
+];
 
 export function getChapter(id: string): Chapter | undefined {
   return chapters.find((c) => c.id === id);
