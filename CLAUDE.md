@@ -146,7 +146,7 @@ Legenda: ☐ nie rozpoczęte · 🔶 tekst wyciągnięty · 🔷 ustrukturyzowan
 | Ch.3 | Marksmanship Training | 54 – 133 | ✅ |
 | Ch.4 | Field Skills | 134 – 225 | ✅ |
 | Ch.5 | Employment | 226 – 265 | ✅ |
-| Ch.6 | Sniper Operations in Urban Terrain | 266 – 290 | ☐ |
+| Ch.6 | Sniper Operations in Urban Terrain | 266 – 290 | ✅ |
 | App.A | Weights, Measures, and Conversion Tables | 291 – 295 | ☐ (kandydat na kalkulator) |
 | App.B | Mission-Essential Tasks List | 296 – 305 | ☐ |
 | App.C | Sustainment Program | 306 – 321 | ☐ |
@@ -169,6 +169,9 @@ Legenda: ☐ nie rozpoczęte · 🔶 tekst wyciągnięty · 🔷 ustrukturyzowan
 Powyższe zakresy stron PDF są zweryfikowane (`pdftotext -f <start> -l <start>`
 pokazuje nagłówek rozdziału/dodatku na pierwszej stronie zakresu). Używać ich
 bezpośrednio zamiast ponownie przeszukiwać dokument.
+
+**Wszystkie sześć głównych rozdziałów (1-6) jest ukończonych.** Pozostała
+praca to wyłącznie Dodatki A-O oraz Glosariusz/Bibliografia (Faza 3-4 planu).
 
 ## Funkcje aplikacji
 
