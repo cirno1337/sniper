@@ -141,32 +141,36 @@ Legenda: ☐ nie rozpoczęte · 🔶 tekst wyciągnięty · 🔷 ustrukturyzowan
 
 | # | Tytuł | Strony (orient.) | Status |
 |---|-------|-------------------|--------|
-| Ch.1 | The Special Forces Sniper | 1-1 – 1-7 (PDF s. 6-12) | ✅ |
-| Ch.2 | Equipment | 2-1 – 2-41 (PDF s. 13-53) | ✅ |
-| Ch.3 | Marksmanship Training | 3-1 – 3-8x | ☐ |
-| Ch.4 | Field Skills | 4-1 – 4-9x | ☐ |
-| Ch.5 | Employment | 5-1 – 5-3x | ☐ |
-| Ch.6 | Sniper Operations in Urban Terrain | 6-1 – 6-2x | ☐ |
-| App.A | Weights, Measures, and Conversion Tables | A-1 | ☐ (kandydat na kalkulator) |
-| App.B | Mission-Essential Tasks List | B-1 | ☐ |
-| App.C | Sustainment Program | C-1 | ☐ |
-| App.D | Mission Packing List | D-1 | ☐ |
-| App.E | M82A1 Caliber .50 Sniper Weapon System | E-1 | ☐ |
-| App.F | Foreign/Nonstandard Sniper Weapon Systems Data | F-1 | ☐ |
-| App.G | Sniper Rifle Telescopes | G-1 | ☐ |
-| App.H | Ballistics Chart | H-1 | ☐ (kandydat na kalkulator) |
-| App.I | Sniper Training Exercises | I-1 | ☐ |
-| App.J | Range Estimation Table | J-1 | ☐ (kandydat na kalkulator) |
-| App.K | Sniper's Logbook | K-1 | ☐ |
-| App.L | Tricks of the Trade | L-1 | ☐ |
-| App.M | Sniper Team Debriefing Format | M-1 | ☐ |
-| App.N | Sniper Range Complex | N-1 | ☐ |
-| App.O | Aerial Platforms | O-1 | ☐ |
-| — | Glossary | — | ☐ (osobna przeszukiwalna strona) |
-| — | Bibliography | — | ☐ (statyczna lista źródeł, niski priorytet) |
+| # | Tytuł | Strony PDF (pdftoppm/pdftotext -f/-l) | Status |
+|---|-------|-------------------|--------|
+| Ch.1 | The Special Forces Sniper | 6 – 12 | ✅ |
+| Ch.2 | Equipment | 13 – 53 | ✅ |
+| Ch.3 | Marksmanship Training | 54 – 133 | ☐ |
+| Ch.4 | Field Skills | 134 – 225 | ☐ |
+| Ch.5 | Employment | 226 – 265 | ☐ |
+| Ch.6 | Sniper Operations in Urban Terrain | 266 – 290 | ☐ |
+| App.A | Weights, Measures, and Conversion Tables | 291 – 295 | ☐ (kandydat na kalkulator) |
+| App.B | Mission-Essential Tasks List | 296 – 305 | ☐ |
+| App.C | Sustainment Program | 306 – 321 | ☐ |
+| App.D | Mission Packing List | 322 – 326 | ☐ |
+| App.E | M82A1 Caliber .50 Sniper Weapon System | 327 – 335 | ☐ |
+| App.F | Foreign/Nonstandard Sniper Weapon Systems Data | 336 – 352 | ☐ |
+| App.G | Sniper Rifle Telescopes | 353 – 363 | ☐ |
+| App.H | Ballistics Chart | 364 – 381 | ☐ (kandydat na kalkulator) |
+| App.I | Sniper Training Exercises | 382 – 387 | ☐ |
+| App.J | Range Estimation Table | 388 – 389 | ☐ (kandydat na kalkulator) |
+| App.K | Sniper's Logbook | 390 – 426 | ☐ (głównie puste formularze — opisać jako referencję, nie przepisywać pustych tabel) |
+| App.L | Tricks of the Trade | 427 – 430 | ☐ |
+| App.M | Sniper Team Debriefing Format | 431 – 433 | ☐ |
+| App.N | Sniper Range Complex | 434 – 436 | ☐ |
+| App.O | Aerial Platforms | 437 – 453 | ☐ |
+| — | Glossary | 454 – 466 | ☐ (osobna przeszukiwalna strona) |
+| — | Bibliography | 467 – 469 | ☐ (statyczna lista źródeł, niski priorytet) |
+| — | Index | 470 – 474 | pominięty celowo (niepotrzebny w aplikacji szkoleniowej) |
 
-Dokładne zakresy stron doprecyzować przy ekstrakcji każdego rozdziału (spis
-treści w PDF podaje tylko strony startowe sekcji, nie zawsze koniec rozdziału).
+Powyższe zakresy stron PDF są zweryfikowane (`pdftotext -f <start> -l <start>`
+pokazuje nagłówek rozdziału/dodatku na pierwszej stronie zakresu). Używać ich
+bezpośrednio zamiast ponownie przeszukiwać dokument.
 
 ## Funkcje aplikacji
 
