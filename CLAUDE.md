@@ -139,8 +139,6 @@ Zasady:
 
 Legenda: ☐ nie rozpoczęte · 🔶 tekst wyciągnięty · 🔷 ustrukturyzowane (sekcje+markdown) · ✅ gotowe (+ quiz + fiszki + zweryfikowane w UI)
 
-| # | Tytuł | Strony (orient.) | Status |
-|---|-------|-------------------|--------|
 | # | Tytuł | Strony PDF (pdftoppm/pdftotext -f/-l) | Status |
 |---|-------|-------------------|--------|
 | Ch.1 | The Special Forces Sniper | 6 – 12 | ✅ |
