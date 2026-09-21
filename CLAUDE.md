@@ -145,7 +145,7 @@ Legenda: ☐ nie rozpoczęte · 🔶 tekst wyciągnięty · 🔷 ustrukturyzowan
 | Ch.2 | Equipment | 13 – 53 | ✅ |
 | Ch.3 | Marksmanship Training | 54 – 133 | ✅ |
 | Ch.4 | Field Skills | 134 – 225 | ✅ |
-| Ch.5 | Employment | 226 – 265 | ☐ |
+| Ch.5 | Employment | 226 – 265 | ✅ |
 | Ch.6 | Sniper Operations in Urban Terrain | 266 – 290 | ☐ |
 | App.A | Weights, Measures, and Conversion Tables | 291 – 295 | ☐ (kandydat na kalkulator) |
 | App.B | Mission-Essential Tasks List | 296 – 305 | ☐ |
