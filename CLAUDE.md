@@ -101,10 +101,39 @@ sniper/
 3. Dla stron z rysunkami (Figure X-Y): najpierw sprawdzić renderem `pdftoppm -png -r 200 -f <page> -l <page>`, czy to tabela/lista tekstowa czy prawdziwa grafika/schemat/zdjęcie.
    - Jeśli to tabela/lista tekstowa (najczęstszy przypadek w rozdz. 1) — przepisać jako natywną tabelę/listę markdown w `body`, NIE jako obraz (lepsza czytelność, spójny styl, tryb ciemny, przeszukiwalność).
    - Jeśli to faktyczna grafika (zdjęcie broni, schemat, diagram, wykres) — dopiero wtedy wyeksportować jako PNG do `public/images/...` i dodać do `figures`.
+3b. Dla kluczowego sprzętu/obiektów opisywanych w sekcji — wyszukać i pobrać 1 dobre zdjęcie poglądowe z internetu wg zasad w sekcji „Grafiki uzupełniające z internetu” poniżej, zapisać do `public/images/chXX/web-*.jpg` i odnotować w `SOURCES.md`.
 4. Przepisanie treści na markdown w `src/content/chXX.ts`, podział na sekcje wg nagłówków z oryginału
 5. Napisanie 5-10 pytań quizowych + 8-15 fiszek per rozdział na bazie kluczowych faktów/liczb/procedur
 6. Podłączenie do routera, wizualna weryfikacja w przeglądarce (dev server)
 7. Odhaczenie w tabeli statusu poniżej
+
+## Grafiki uzupełniające z internetu
+
+Oprócz rysunków/schematów wyciąganych z samego PDF-a, lekcje uzupełniamy o
+**dodatkowe zdjęcia z internetu**, tam gdzie realnie pomagają zwizualizować
+sprzęt lub sytuację (np. rzeczywiste zdjęcie karabinu M24, lunety M3A,
+konkretnego typu amunicji, urządzenia obserwacyjnego) — PDF z 2003 roku ma
+rysunki kreskowe/skany słabej jakości, a dobre zdjęcie referencyjne ułatwia
+naukę.
+
+Zasady:
+
+- **Źródła priorytetowo public domain / jasno licencjonowane**: oficjalne
+  zdjęcia rządu/wojska USA (`*.mil`, `*.gov`, DVIDS) są z definicji public
+  domain; poza tym Wikimedia Commons z jasną licencją (public domain, CC-BY,
+  CC-BY-SA). Unikać zdjęć produktowych sklepów/producentów i przypadkowych
+  stron bez jasnej licencji.
+- Każde pobrane zdjęcie trafia do `public/images/chXX/web-<opis>.jpg`
+  (prefiks `web-` odróżnia je od `fig-*` pochodzących z oryginału PDF).
+- Każde pobranie **musi być odnotowane** w `public/images/chXX/SOURCES.md`:
+  nazwa pliku, adres URL źródła, autor/licencja, data pobrania.
+- W `caption` figury w treści lekcji jasno zaznaczyć, że to zdjęcie
+  poglądowe spoza podręcznika, np. „Zdjęcie poglądowe: karabin M24 SWS
+  (źródło: Wikimedia Commons, public domain)” — żeby nie sugerować, że
+  pochodzi z oryginalnego FM 3-05.222.
+- Dodawać oszczędnie — tylko tam, gdzie zdjęcie faktycznie pomaga zrozumieć
+  fragment tekstu (konkretny model sprzętu, rozpoznawalny obiekt), a nie jako
+  ozdobnik do każdej sekcji.
 
 ## Mapa treści i status realizacji
 
@@ -113,7 +142,7 @@ Legenda: ☐ nie rozpoczęte · 🔶 tekst wyciągnięty · 🔷 ustrukturyzowan
 | # | Tytuł | Strony (orient.) | Status |
 |---|-------|-------------------|--------|
 | Ch.1 | The Special Forces Sniper | 1-1 – 1-7 (PDF s. 6-12) | ✅ |
-| Ch.2 | Equipment | 2-1 – 2-4x | ☐ |
+| Ch.2 | Equipment | 2-1 – 2-41 (PDF s. 13-53) | ✅ |
 | Ch.3 | Marksmanship Training | 3-1 – 3-8x | ☐ |
 | Ch.4 | Field Skills | 4-1 – 4-9x | ☐ |
 | Ch.5 | Employment | 5-1 – 5-3x | ☐ |
