@@ -275,8 +275,11 @@ dalsze prace to już rozszerzenia ponad plan, nie zaległości.
   Repo przełączone na publiczne (`gh repo edit --visibility public`), dodano
   `.github/workflows/deploy.yml` (build + `actions/deploy-pages`), ustawiono
   `base`/`basename` na `/sniper` (Vite + React Router) pod subpath Pages,
-  włączono GitHub Pages z źródłem „GitHub Actions”. Adres:
-  `https://cirno1337.github.io/sniper/`.
+  włączono GitHub Pages z źródłem „GitHub Actions”. Dodano `public/404.html`
+  + skrypt w `index.html` (standardowy trik spa-github-pages) — bez tego
+  bezpośrednie wejście/odświeżenie pod `/sniper/rozdzial/...` dawałoby 404,
+  bo Pages to statyczny hosting bez server-side rewrite dla SPA routingu.
+  Adres: `https://cirno1337.github.io/sniper/`.
 
 ## Zasady pracy nad treścią
 
