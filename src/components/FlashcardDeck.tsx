@@ -54,12 +54,14 @@ export function FlashcardDeck({ items }: { items: FlashcardDeckItem[] }) {
 
   return (
     <div>
-      <p className="mb-3 text-xs uppercase tracking-wide text-neutral-500">
+      <p className="mb-3 text-xs uppercase tracking-wide text-neutral-500" aria-live="polite">
         Fiszka {safeIndex + 1} / {items.length} · Umiem: {knownCount}/{items.length}
       </p>
       <button
         onClick={() => setFlipped((f) => !f)}
-        className="flex min-h-40 w-full flex-col items-center justify-center rounded-lg border border-neutral-800 bg-neutral-900 p-6 text-center transition-colors hover:border-neutral-600"
+        aria-pressed={flipped}
+        aria-label={flipped ? "Pokazano definicję — kliknij, aby wrócić do terminu" : "Pokazano termin — kliknij, aby zobaczyć definicję"}
+        className="flex min-h-40 w-full flex-col items-center justify-center rounded-lg border border-neutral-800 bg-neutral-900 p-6 text-center transition-colors hover:border-neutral-600 focus-visible:outline-2 focus-visible:outline-amber-500"
       >
         {!flipped ? (
           <span className="text-lg font-semibold text-neutral-100">{card.term}</span>
@@ -71,14 +73,16 @@ export function FlashcardDeck({ items }: { items: FlashcardDeckItem[] }) {
       <div className="mt-4 flex items-center justify-between gap-2">
         <button
           onClick={() => go(-1)}
-          className="rounded-md border border-neutral-700 px-3 py-1.5 text-sm text-neutral-300 hover:border-neutral-500"
+          aria-label="Poprzednia fiszka"
+          className="rounded-md border border-neutral-700 px-3 py-1.5 text-sm text-neutral-300 hover:border-neutral-500 focus-visible:outline-2 focus-visible:outline-amber-500"
         >
           Poprzednia
         </button>
         <div className="flex gap-2">
           <button
             onClick={markKnown}
-            className={`rounded-md px-3 py-1.5 text-sm font-medium ${
+            aria-pressed={isKnown}
+            className={`rounded-md px-3 py-1.5 text-sm font-medium focus-visible:outline-2 focus-visible:outline-amber-500 ${
               isKnown
                 ? "bg-emerald-500/20 text-emerald-300"
                 : "bg-emerald-500 text-neutral-950 hover:bg-emerald-400"
@@ -89,7 +93,8 @@ export function FlashcardDeck({ items }: { items: FlashcardDeckItem[] }) {
         </div>
         <button
           onClick={() => go(1)}
-          className="rounded-md border border-neutral-700 px-3 py-1.5 text-sm text-neutral-300 hover:border-neutral-500"
+          aria-label="Następna fiszka"
+          className="rounded-md border border-neutral-700 px-3 py-1.5 text-sm text-neutral-300 hover:border-neutral-500 focus-visible:outline-2 focus-visible:outline-amber-500"
         >
           Następna
         </button>

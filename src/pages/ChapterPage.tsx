@@ -1,15 +1,38 @@
-import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams, useLocation, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { getChapter } from "../content";
 import { ChapterTabs } from "../components/ChapterTabs";
 import { useProgressContext } from "../context/ProgressContext";
 import { kindLabel } from "../lib/kindLabel";
+import type { Components } from "react-markdown";
+
+const markdownComponents: Components = {
+  table: ({ node: _node, ...props }) => (
+    <div className="overflow-x-auto">
+      <table {...props} />
+    </div>
+  ),
+};
 
 export function ChapterPage() {
   const { id = "" } = useParams();
   const chapter = getChapter(id);
   const { getChapterProgress, toggleSectionComplete } = useProgressContext();
+  const location = useLocation();
+  const [highlighted, setHighlighted] = useState<string | null>(null);
+
+  useEffect(() => {
+    const hash = location.hash.replace(/^#/, "");
+    if (!hash) return;
+    const el = document.getElementById(hash);
+    if (!el) return;
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
+    setHighlighted(hash);
+    const t = setTimeout(() => setHighlighted(null), 2200);
+    return () => clearTimeout(t);
+  }, [location.hash, chapter?.id]);
 
   if (!chapter) {
     return (
@@ -35,7 +58,13 @@ export function ChapterPage() {
         {chapter.sections.map((section) => {
           const done = progress.completedSections.includes(section.id);
           return (
-            <section key={section.id} id={section.id}>
+            <section
+              key={section.id}
+              id={section.id}
+              className={`scroll-mt-6 rounded-lg transition-colors duration-500 ${
+                highlighted === section.id ? "bg-amber-500/10 ring-1 ring-amber-500/40" : ""
+              }`}
+            >
               <div className="mb-3 flex items-center justify-between gap-4">
                 <h2 className="text-lg font-semibold text-neutral-100">
                   {section.title}{" "}
@@ -51,8 +80,10 @@ export function ChapterPage() {
                   Ukończone
                 </label>
               </div>
-              <div className="prose prose-invert prose-sm max-w-none prose-headings:text-neutral-100 prose-strong:text-neutral-100 prose-a:text-amber-400">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>{section.body}</ReactMarkdown>
+              <div className="prose prose-invert prose-sm max-w-none prose-headings:text-neutral-100 prose-strong:text-neutral-100 prose-a:text-amber-400 prose-table:text-xs sm:prose-table:text-sm">
+                <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+                  {section.body}
+                </ReactMarkdown>
               </div>
               {section.figures && section.figures.length > 0 && (
                 <div className="mt-4 flex flex-col gap-4">

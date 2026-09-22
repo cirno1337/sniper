@@ -73,7 +73,7 @@ export function QuizRunner({ chapterId, quiz }: { chapterId: string; quiz: QuizQ
         Pytanie {index + 1} / {quiz.length}
       </p>
       <h3 className="mb-4 text-base font-medium text-neutral-100">{question.question}</h3>
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2" role="radiogroup" aria-label="Odpowiedzi">
         {question.options.map((option, i) => {
           const isCorrect = i === question.correctIndex;
           const isSelected = i === selected;
@@ -88,7 +88,9 @@ export function QuizRunner({ chapterId, quiz }: { chapterId: string; quiz: QuizQ
               key={i}
               onClick={() => choose(i)}
               disabled={selected !== null}
-              className={`rounded-md border px-4 py-2 text-left text-sm transition-colors ${style}`}
+              role="radio"
+              aria-checked={isSelected}
+              className={`rounded-md border px-4 py-2 text-left text-sm transition-colors focus-visible:outline-2 focus-visible:outline-amber-500 disabled:cursor-default ${style}`}
             >
               {option}
             </button>
@@ -96,14 +98,15 @@ export function QuizRunner({ chapterId, quiz }: { chapterId: string; quiz: QuizQ
         })}
       </div>
       {selected !== null && (
-        <div className="mt-4 rounded-md bg-neutral-800/60 p-3 text-sm text-neutral-300">
+        <div className="mt-4 rounded-md bg-neutral-800/60 p-3 text-sm text-neutral-300" role="status" aria-live="polite">
+          {selected === question.correctIndex ? "Poprawnie. " : "Niepoprawnie. "}
           {question.explanation}
         </div>
       )}
       {selected !== null && (
         <button
           onClick={next}
-          className="mt-4 rounded-md bg-amber-500 px-4 py-2 text-sm font-medium text-neutral-950 hover:bg-amber-400"
+          className="mt-4 rounded-md bg-amber-500 px-4 py-2 text-sm font-medium text-neutral-950 hover:bg-amber-400 focus-visible:outline-2 focus-visible:outline-neutral-950"
         >
           {isLast ? "Zakończ quiz" : "Następne pytanie"}
         </button>

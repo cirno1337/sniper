@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { chapters } from "../content";
 import { useProgressContext } from "../context/ProgressContext";
 import { ProgressBar } from "./ProgressBar";
+import { SearchBox } from "./SearchBox";
 import { kindLabelPlural } from "../lib/kindLabel";
 
 const tools = [
@@ -10,15 +11,17 @@ const tools = [
   { to: "/narzedzia", label: "Kalkulatory" },
 ];
 
-export function Sidebar() {
+export function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const { chapterCompletionPercent } = useProgressContext();
   const groups = ["chapter", "appendix", "reference"] as const;
 
   return (
     <nav className="flex h-full w-64 shrink-0 flex-col gap-6 overflow-y-auto border-r border-neutral-800 bg-neutral-950 p-4">
-      <NavLink to="/" className="text-lg font-semibold text-neutral-100">
+      <NavLink to="/" onClick={onNavigate} className="text-lg font-semibold text-neutral-100">
         Szkolenie snajperskie
       </NavLink>
+
+      <SearchBox onNavigate={onNavigate} />
 
       <div>
         <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
@@ -29,6 +32,7 @@ export function Sidebar() {
             <li key={t.to}>
               <NavLink
                 to={t.to}
+                onClick={onNavigate}
                 className={({ isActive }) =>
                   `block rounded-md px-2 py-1.5 text-sm transition-colors ${
                     isActive
@@ -59,6 +63,7 @@ export function Sidebar() {
                   <li key={c.id}>
                     <NavLink
                       to={`/rozdzial/${c.id}`}
+                      onClick={onNavigate}
                       className={({ isActive }) =>
                         `block rounded-md px-2 py-1.5 text-sm transition-colors ${
                           isActive

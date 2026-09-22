@@ -195,10 +195,30 @@ dashboard postępu na stronie głównej (sekcje ukończone, fiszki opanowane,
 (pełne tabele 9 nabojów z Appendix H, lookup co 100 m), szacowanie odległości
 mil-relation (formuła + żywa tabela jak Table J-1 z Appendix J). Dane
 kalkulatorów żyją w `src/data/units.ts` i `src/data/ballistics.ts`.
-Pozostaje tylko:
-- **Faza 6 — polish**: responsywność mobile, dostępność (a11y), wyszukiwarka
-  pełnotekstowa po treści lekcji (tryb ciemny jest już domyślny/jedyny —
-  sprawdzić, czy to wystarczające, czy dodać przełącznik jasnego motywu).
+**Faza 6 (polish) również ukończona**:
+- **Responsywność mobile**: `Layout.tsx` ma teraz wysuwany panel boczny na
+  ekranach < `lg` (1024px) — hamburger + nagłówek na górze, sidebar jako
+  `fixed` panel z overlay, zamyka się automatycznie po nawigacji. Tabele w
+  markdownie (`ChapterPage.tsx`) owinięte w `overflow-x-auto`, żeby szerokie
+  tabele balistyczne przewijały się we własnym kontenerze zamiast łamać
+  layout strony. Zweryfikowane wizualnie przy 500px i 1400px szerokości.
+- **Dostępność (a11y)**: globalny widoczny `:focus-visible` (index.css),
+  `prefers-reduced-motion` respektowany, `role="progressbar"` na paskach
+  postępu, `role="radiogroup"`/`radio` + `aria-live` na feedback w
+  QuizRunner, `aria-label`/`aria-pressed` na FlashcardDeck, skip-link
+  "Przejdź do treści", aria-labels na przyciskach ikonowych (hamburger,
+  zamknięcie menu).
+- **Wyszukiwarka pełnotekstowa**: `src/lib/search.ts` buduje indeks ze
+  wszystkich sekcji (109), dopasowuje po tytule sekcji/rozdziału/treści z
+  prostym rankingiem; `SearchBox.tsx` w sidebarze pokazuje żywe wyniki z
+  fragmentem tekstu, nawigacja klawiaturą (strzałki/Enter/Esc), klik
+  przenosi do `/rozdzial/:id#sectionId` z płynnym scrollem i chwilowym
+  podświetleniem sekcji (`ChapterPage.tsx`).
+- Tryb ciemny jest jedynym/domyślnym motywem aplikacji — uznane za
+  wystarczające, bez przełącznika jasnego motywu (nie proszono o to).
+
+Repo jest teraz kompletne względem pierwotnego planu (Fazy 0-6). Ewentualne
+dalsze prace to już rozszerzenia ponad plan, nie zaległości.
 
 ## Funkcje aplikacji
 
@@ -232,8 +252,10 @@ Pozostaje tylko:
   błędnie opisana jako „wysokość w mm" zamiast „w metrach" — niespójne z
   własnym przykładem podręcznika i Tabelą J-1; Rozdział 4 miał poprawną
   wersję, więc rozbieżność ujawnił dopiero kalkulator).
-- **Faza 6 — Polish**: responsywność (mobile), tryb ciemny, dostępność (a11y),
-  wyszukiwarka pełnotekstowa po treści lekcji.
+- **Faza 6 — Polish** ✅: responsywność (mobile), dostępność (a11y),
+  wyszukiwarka pełnotekstowa po treści lekcji. Zaimplementowane:
+  `Layout.tsx` (drawer mobile), `SearchBox.tsx` + `src/lib/search.ts`,
+  poprawki a11y w `index.css`/`QuizRunner`/`FlashcardDeck`/`ProgressBar`.
 - **Faza 7 — Repo GitHub (prywatne, backup)**: `git init`, `.gitignore`
   (`node_modules`, `dist`), utworzenie prywatnego repo przez
   `gh repo create --private`, pierwszy push. Bez Pages, bez Actions — repo
