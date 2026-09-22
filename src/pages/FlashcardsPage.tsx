@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { getChapter } from "../content";
 import { ChapterTabs } from "../components/ChapterTabs";
 import { FlashcardDeck } from "../components/FlashcardDeck";
+import { kindLabel } from "../lib/kindLabel";
 
 export function FlashcardsPage() {
   const { id = "" } = useParams();
@@ -15,14 +16,16 @@ export function FlashcardsPage() {
     );
   }
 
+  const items = chapter.flashcards.map((card) => ({ chapterId: chapter.id, card }));
+
   return (
     <div>
       <p className="text-sm font-medium text-amber-400">
-        {chapter.kind === "chapter" ? "Rozdział" : "Dodatek"} {chapter.number}
+        {kindLabel[chapter.kind]} {chapter.number}
       </p>
       <h1 className="mt-1 text-2xl font-bold text-neutral-50">{chapter.title} — Fiszki</h1>
       <ChapterTabs chapterId={chapter.id} />
-      <FlashcardDeck chapterId={chapter.id} cards={chapter.flashcards} />
+      <FlashcardDeck items={items} />
     </div>
   );
 }

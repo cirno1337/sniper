@@ -1,26 +1,50 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type { Flashcard } from "../types/content";
 import { useProgressContext } from "../context/ProgressContext";
 
-export function FlashcardDeck({ chapterId, cards }: { chapterId: string; cards: Flashcard[] }) {
+export interface FlashcardDeckItem {
+  chapterId: string;
+  card: Flashcard;
+}
+
+export function FlashcardDeck({ items }: { items: FlashcardDeckItem[] }) {
   const { getChapterProgress, toggleFlashcardKnown } = useProgressContext();
   const [index, setIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
-  const known = getChapterProgress(chapterId).knownFlashcards;
 
-  const card = cards[index];
-  const knownCount = useMemo(
-    () => cards.filter((c) => known.includes(c.id)).length,
-    [cards, known],
+  // Sygnatura oparta na wartościach (id kart), nie na referencji tablicy `items` —
+  // ta ostatnia zmienia się przy KAŻDEJ aktualizacji postępu (np. oznaczeniu "Umiem"),
+  // bo getChapterProgress dostaje nową referencję ze stanu. Reset pozycji ma się
+  // wykonać tylko wtedy, gdy realnie zmienił się skład talii (np. inny filtr rozdziałów).
+  const signature = useMemo(
+    () => items.map(({ chapterId, card }) => `${chapterId}:${card.id}`).join("|"),
+    [items],
   );
 
-  if (cards.length === 0) {
-    return <p className="text-neutral-400">Fiszki dla tego rozdziału nie są jeszcze gotowe.</p>;
+  useEffect(() => {
+    setIndex(0);
+    setFlipped(false);
+  }, [signature]);
+
+  const knownCount = useMemo(
+    () =>
+      items.filter(({ chapterId, card }) =>
+        getChapterProgress(chapterId).knownFlashcards.includes(card.id),
+      ).length,
+    [items, getChapterProgress],
+  );
+
+  if (items.length === 0) {
+    return <p className="text-neutral-400">Brak fiszek do wyświetlenia.</p>;
   }
+
+  const safeIndex = Math.min(index, items.length - 1);
+  const { chapterId, card } = items[safeIndex];
+  const isKnown = getChapterProgress(chapterId).knownFlashcards.includes(card.id);
 
   function go(delta: number) {
     setFlipped(false);
-    setIndex((i) => (i + delta + cards.length) % cards.length);
+    setIndex((i) => (i + delta + items.length) % items.length);
   }
 
   function markKnown() {
@@ -31,7 +55,7 @@ export function FlashcardDeck({ chapterId, cards }: { chapterId: string; cards: 
   return (
     <div>
       <p className="mb-3 text-xs uppercase tracking-wide text-neutral-500">
-        Fiszka {index + 1} / {cards.length} · Umiem: {knownCount}/{cards.length}
+        Fiszka {safeIndex + 1} / {items.length} · Umiem: {knownCount}/{items.length}
       </p>
       <button
         onClick={() => setFlipped((f) => !f)}
@@ -55,12 +79,12 @@ export function FlashcardDeck({ chapterId, cards }: { chapterId: string; cards: 
           <button
             onClick={markKnown}
             className={`rounded-md px-3 py-1.5 text-sm font-medium ${
-              known.includes(card.id)
+              isKnown
                 ? "bg-emerald-500/20 text-emerald-300"
                 : "bg-emerald-500 text-neutral-950 hover:bg-emerald-400"
             }`}
           >
-            {known.includes(card.id) ? "Oznaczona jako umiana ✓" : "Umiem"}
+            {isKnown ? "Oznaczona jako umiana ✓" : "Umiem"}
           </button>
         </div>
         <button

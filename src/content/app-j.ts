@@ -12,7 +12,7 @@ export const appJ: Chapter = {
       id: "table",
       title: "Tabela J-1: mile dla obiektów o znanej wysokości",
       page: "J-1",
-      body: `Wzór mil-relation: **(wysokość celu w mm × 1000) / odczyt w milach = odległość w metrach**. Przykład z oryginału: drzwi o wysokości 2 m → (2 × 1000) / odczyt 3,5 mila = **571 m**.
+      body: `Wzór mil-relation: **(wysokość celu w metrach × 1000) / odczyt w milach = odległość w metrach**. Przykład z oryginału: drzwi o wysokości 2 m → (2 × 1000) / odczyt 3,5 mila = **571 m**.
 
 Poniższa tabela podaje gotowy wynik tego wzoru dla pięciu typowych wysokości referencyjnych (6 stóp / 1,8 m — przeciętny mężczyzna stojący; 5 stóp 9 cali / 1,75 m; 5 stóp 6 cali / 1,7 m; 39 cali / 1 m; 19 cali / 0,5 m — przeciętny mężczyzna w pozycji klęczącej/kucającej) w funkcji odczytu mil na siatce celowniczej.
 
@@ -44,13 +44,13 @@ Poniższa tabela podaje gotowy wynik tego wzoru dla pięciu typowych wysokości 
       id: "q1",
       question: "Jaki jest wzór mil-relation do obliczenia odległości?",
       options: [
-        "(wysokość w mm × 1000) / odczyt w milach",
-        "(odczyt w milach × 1000) / wysokość w mm",
-        "wysokość w mm / (1000 × odczyt w milach)",
-        "odczyt w milach × wysokość w mm × 1000",
+        "(wysokość w metrach × 1000) / odczyt w milach",
+        "(odczyt w milach × 1000) / wysokość w metrach",
+        "wysokość w metrach / (1000 × odczyt w milach)",
+        "odczyt w milach × wysokość w metrach × 1000",
       ],
       correctIndex: 0,
-      explanation: "Odległość w metrach = (wysokość celu w mm × 1000) podzielone przez odczyt w milach.",
+      explanation: "Odległość w metrach = (wysokość celu w metrach × 1000) podzielone przez odczyt w milach.",
     },
     {
       id: "q2",
@@ -82,7 +82,7 @@ Poniższa tabela podaje gotowy wynik tego wzoru dla pięciu typowych wysokości 
     },
   ],
   flashcards: [
-    { id: "f1", term: "Wzór mil-relation", definition: "(Wysokość celu w mm × 1000) / odczyt w milach = odległość w metrach — podstawowy wzór szacowania odległości na podstawie znanej wysokości obiektu i jego wielkości kątowej w milach." },
+    { id: "f1", term: "Wzór mil-relation", definition: "(Wysokość celu w metrach × 1000) / odczyt w milach = odległość w metrach — podstawowy wzór szacowania odległości na podstawie znanej wysokości obiektu i jego wielkości kątowej w milach." },
     { id: "f2", term: "Table J-1 (Mils for Objects)", definition: "Gotowa tabela odległości dla pięciu typowych wysokości referencyjnych (1,8 m, 1,75 m, 1,7 m, 1 m, 0,5 m) w funkcji odczytu mil, eliminująca potrzebę liczenia wzoru w polu." },
     { id: "f3", term: "Zależność mil ↔ odległość", definition: "Im mniejszy odczyt kątowy w milach dla obiektu o stałej wysokości, tym większa odległość do niego — zależność odwrotnie proporcjonalna." },
   ],

@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { getChapter } from "../content";
 import { ChapterTabs } from "../components/ChapterTabs";
 import { QuizRunner } from "../components/QuizRunner";
+import { kindLabel } from "../lib/kindLabel";
 
 export function QuizPage() {
   const { id = "" } = useParams();
@@ -18,7 +19,7 @@ export function QuizPage() {
   return (
     <div>
       <p className="text-sm font-medium text-amber-400">
-        {chapter.kind === "chapter" ? "Rozdział" : "Dodatek"} {chapter.number}
+        {kindLabel[chapter.kind]} {chapter.number}
       </p>
       <h1 className="mt-1 text-2xl font-bold text-neutral-50">{chapter.title} — Quiz</h1>
       <ChapterTabs chapterId={chapter.id} />

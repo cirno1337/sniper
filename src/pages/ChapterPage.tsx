@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import { getChapter } from "../content";
 import { ChapterTabs } from "../components/ChapterTabs";
 import { useProgressContext } from "../context/ProgressContext";
+import { kindLabel } from "../lib/kindLabel";
 
 export function ChapterPage() {
   const { id = "" } = useParams();
@@ -23,7 +24,7 @@ export function ChapterPage() {
   return (
     <div>
       <p className="text-sm font-medium text-amber-400">
-        {chapter.kind === "chapter" ? "Rozdział" : "Dodatek"} {chapter.number}
+        {kindLabel[chapter.kind]} {chapter.number}
       </p>
       <h1 className="mt-1 text-2xl font-bold text-neutral-50">{chapter.title}</h1>
       <p className="mt-3 text-neutral-400">{chapter.summary}</p>

@@ -2,12 +2,13 @@ import { NavLink } from "react-router-dom";
 import { chapters } from "../content";
 import { useProgressContext } from "../context/ProgressContext";
 import { ProgressBar } from "./ProgressBar";
+import { kindLabelPlural } from "../lib/kindLabel";
 
-const kindLabel: Record<string, string> = {
-  chapter: "Rozdziały",
-  appendix: "Dodatki",
-  reference: "Materiały",
-};
+const tools = [
+  { to: "/egzamin", label: "Egzamin końcowy" },
+  { to: "/fiszki", label: "Wszystkie fiszki" },
+  { to: "/narzedzia", label: "Kalkulatory" },
+];
 
 export function Sidebar() {
   const { chapterCompletionPercent } = useProgressContext();
@@ -18,13 +19,38 @@ export function Sidebar() {
       <NavLink to="/" className="text-lg font-semibold text-neutral-100">
         Szkolenie snajperskie
       </NavLink>
+
+      <div>
+        <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
+          Narzędzia
+        </p>
+        <ul className="flex flex-col gap-1">
+          {tools.map((t) => (
+            <li key={t.to}>
+              <NavLink
+                to={t.to}
+                className={({ isActive }) =>
+                  `block rounded-md px-2 py-1.5 text-sm transition-colors ${
+                    isActive
+                      ? "bg-amber-500/15 text-amber-400"
+                      : "text-neutral-300 hover:bg-neutral-900"
+                  }`
+                }
+              >
+                {t.label}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       {groups.map((kind) => {
         const items = chapters.filter((c) => c.kind === kind);
         if (items.length === 0) return null;
         return (
           <div key={kind}>
             <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-neutral-500">
-              {kindLabel[kind]}
+              {kindLabelPlural[kind]}
             </p>
             <ul className="flex flex-col gap-1">
               {items.map((c) => {

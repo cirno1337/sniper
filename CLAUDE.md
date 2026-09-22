@@ -66,31 +66,36 @@ interface QuizQuestion {
 interface Flashcard { id: string; term: string; definition: string; }
 ```
 
-## Struktura katalogów (docelowa)
+## Struktura katalogów (aktualna)
 
 ```
 sniper/
   FM3-05.222(03).pdf
   CLAUDE.md
   scripts/
-    extract-text.sh       # pdftotext -layout -f <start> -l <end>
-    render-page.sh         # pdftoppm -png -r 200 dla stron z rysunkami/tabelami
-  raw/                      # surowy tekst wyciągnięty z PDF, per rozdział (nieużywany w buildzie)
-  public/images/chXX|appX/  # wyeksportowane rysunki/tabele jako PNG
+    validate-content.mjs   # walidacja treści bez przeglądarki (patrz niżej)
+  raw/                      # surowy tekst wyciągnięty z PDF, per rozdział (gitignored, nieużywany w buildzie)
+  public/images/chXX|app-X/ # wyeksportowane rysunki (fig-*) + zdjęcia z internetu (web-*) + SOURCES.md
   src/
-    main.tsx, App.tsx, router.tsx
+    main.tsx, App.tsx
     types/content.ts
     content/
-      ch01.ts ... ch06.ts
-      app-a.ts ... app-o.ts
-      glossary.ts
+      ch01.ts ... ch06.ts, app-a.ts ... app-o.ts, glossary.ts, bibliography.ts
+      index.ts               # agreguje wszystko w `chapters: Chapter[]`
+    data/
+      units.ts               # kategorie/współczynniki dla konwertera jednostek
+      ballistics.ts           # pełne tabele balistyczne 9 nabojów (Dodatek H)
+    lib/
+      kindLabel.ts            # etykiety PL dla ChapterKind (chapter/appendix/reference)
+      exam.ts                 # losowanie puli pytań do egzaminu końcowego
     components/
-      Layout.tsx, Sidebar.tsx, ProgressBar.tsx
-      QuizRunner.tsx, FlashcardDeck.tsx
-      tools/BallisticsCalculator.tsx, tools/UnitConverter.tsx, tools/RangeEstimator.tsx
+      Layout.tsx, Sidebar.tsx, ProgressBar.tsx, ChapterTabs.tsx
+      QuizRunner.tsx, FlashcardDeck.tsx (generyczny — przyjmuje items: {chapterId, card}[])
+      tools/UnitConverter.tsx, tools/BallisticsCalculator.tsx, tools/RangeEstimator.tsx
     pages/
-      Home.tsx, ChapterPage.tsx, QuizPage.tsx, FlashcardsPage.tsx, ToolsPage.tsx, GlossaryPage.tsx
-    hooks/useProgress.ts     # localStorage: ukończone sekcje/quizy per rozdział
+      Home.tsx, ChapterPage.tsx, QuizPage.tsx, FlashcardsPage.tsx
+      ExamPage.tsx, AllFlashcardsPage.tsx, ToolsPage.tsx
+    hooks/useProgress.ts, context/ProgressContext.tsx
   vite.config.ts
 ```
 
@@ -180,17 +185,20 @@ bezpośrednio zamiast ponownie przeszukiwać dokument.
 
 **Cała zaplanowana treść z FM 3-05.222 jest ukończona**: wszystkie sześć
 głównych rozdziałów (1-6), wszystkie dodatki (A-O) oraz Glosariusz i
-Bibliografia (Index celowo pominięty). Fazy 0-4 zamknięte. Pozostaje:
-- **Faza 5 — funkcje przekrojowe**: egzamin końcowy losujący pytania ze
-  wszystkich rozdziałów, zbiorczy widok fiszek ze wszystkich rozdziałów,
-  dashboard postępu na stronie głównej, oraz trzy kalkulatory/narzędzia z
-  danych już obecnych w treści: konwerter jednostek (Appendix A), kalkulator
-  balistyczny (Appendix H + sekcja Ballistics w rozdz. 3), pomoc do
-  szacowania odległości (Appendix J + sekcja Range Estimation w rozdz. 4).
+Bibliografia (Index celowo pominięty). **Faza 5 (funkcje przekrojowe) również
+ukończona**: egzamin końcowy (`/egzamin`, losuje z puli 174 pytań ze
+wszystkich rozdziałów/dodatków, wybór liczby pytań 20/30/40/60), zbiorczy
+widok fiszek (`/fiszki`, 280 fiszek, filtr po rozdziale + „tylko nieznane"),
+dashboard postępu na stronie głównej (sekcje ukończone, fiszki opanowane,
+średni wynik quizów) oraz trzy kalkulatory (`/narzedzia`): konwerter jednostek
+(dane z Appendix A, precyzyjne współczynniki SI), kalkulator balistyczny
+(pełne tabele 9 nabojów z Appendix H, lookup co 100 m), szacowanie odległości
+mil-relation (formuła + żywa tabela jak Table J-1 z Appendix J). Dane
+kalkulatorów żyją w `src/data/units.ts` i `src/data/ballistics.ts`.
+Pozostaje tylko:
 - **Faza 6 — polish**: responsywność mobile, dostępność (a11y), wyszukiwarka
   pełnotekstowa po treści lekcji (tryb ciemny jest już domyślny/jedyny —
   sprawdzić, czy to wystarczające, czy dodać przełącznik jasnego motywu).
-(funkcje przekrojowe: egzamin końcowy, kalkulatory, dashboard postępu).
 
 ## Funkcje aplikacji
 
@@ -216,8 +224,14 @@ Bibliografia (Index celowo pominięty). Fazy 0-4 zamknięte. Pozostaje:
 - **Faza 3 — Dodatki A-O**: jw., dla dodatków — priorytet na te oznaczone jako
   kandydaci na kalkulatory (A, H, J), potem reszta jako strony referencyjne.
 - **Faza 4 — Glosariusz**: strona z wyszukiwarką pojęć.
-- **Faza 5 — Funkcje przekrojowe**: egzamin końcowy (mix pytań), zbiorczy widok
-  fiszek, dashboard postępu, dopięcie kalkulatorów.
+- **Faza 5 — Funkcje przekrojowe** ✅: egzamin końcowy (mix pytań), zbiorczy
+  widok fiszek, dashboard postępu, dopięcie kalkulatorów. Zaimplementowane:
+  `src/pages/ExamPage.tsx`, `AllFlashcardsPage.tsx`, `ToolsPage.tsx` +
+  `src/components/tools/*` + `src/data/{units,ballistics}.ts`.
+  Przy okazji naprawiony błąd merytoryczny w Dodatku J (formuła mil-relation
+  błędnie opisana jako „wysokość w mm" zamiast „w metrach" — niespójne z
+  własnym przykładem podręcznika i Tabelą J-1; Rozdział 4 miał poprawną
+  wersję, więc rozbieżność ujawnił dopiero kalkulator).
 - **Faza 6 — Polish**: responsywność (mobile), tryb ciemny, dostępność (a11y),
   wyszukiwarka pełnotekstowa po treści lekcji.
 - **Faza 7 — Repo GitHub (prywatne, backup)**: `git init`, `.gitignore`
