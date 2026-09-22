@@ -8,12 +8,12 @@ Interaktywna aplikacja webowa (SPA) do nauki treści z podręcznika **FM 3-05.22
 Aplikacja pokrywa **całość podręcznika**: rozdziały 1-6 oraz wszystkie dodatki
 A-O, w formie lekcji, quizów, fiszek i interaktywnych narzędzi/kalkulatorów.
 
-**Hosting: w 100% lokalne użycie** (`npm run dev` / lokalny build). Kod
-wersjonowany na GitHubie w **prywatnym repozytorium** wyłącznie jako
-backup/historia zmian — bez GitHub Pages i bez żadnego publicznego wdrożenia
-(zdecydowane świadomie, m.in. ze względu na klauzulę ograniczonej dystrybucji
-źródłowego PDF-a — patrz niżej). Jeśli w przyszłości pojawi się potrzeba
-publicznego/współdzielonego dostępu, wrócić do tej decyzji.
+**Hosting: GitHub Pages** (publiczny, `https://cirno1337.github.io/sniper/`),
+budowany automatycznie z `main` przez `.github/workflows/deploy.yml`. Repo na
+GitHubie (`cirno1337/sniper`) jest **publiczne** — decyzja świadomie zmieniona
+2026-09-22 (wcześniej repo było prywatne, bez Pages, właśnie ze względu na
+klauzulę dystrybucji PDF-a — patrz niżej). Nadal działa też lokalnie
+(`npm run dev` / lokalny build).
 
 ## Uwaga dot. źródła
 
@@ -21,15 +21,25 @@ Dokument ma na stronie tytułowej klauzulę: *"Distribution authorized to U.S.
 Government agencies and their contractors only... Other requests for this
 document must be referred to Commander, USAJFKSWCS..."* — formalnie to nie jest
 dokument o nieograniczonej dystrybucji, mimo że krąży publicznie w sieci od lat.
-Dlatego repo pozostaje **prywatne** i **bez publicznego wdrożenia** (patrz wyżej).
+Z tego powodu **sam plik `FM3-05.222(03).pdf` nie znajduje się w repozytorium
+ani w publikowanej aplikacji** — został usunięty z historii gita przy
+upublicznieniu repo (2026-09-22) i jest w `.gitignore`. Publikowana jest
+wyłącznie parafrazowana treść lekcji/quizów/fiszek napisana na jego podstawie,
+plus obrazy w `public/images/` (rysunki wyeksportowane z PDF-a oraz zdjęcia z
+internetu — patrz sekcja „Grafiki uzupełniające z internetu”). Jeśli ktoś
+potrzebuje samego oryginalnego PDF-a do pracy nad treścią, trzyma go lokalnie
+poza repo.
 
 ## Stos technologiczny
 
 - **Vite + React + TypeScript** — SPA, szybki dev server, łatwy build statyczny
-- **React Router** — routing rozdziałów/lekcji (bez `basename`, aplikacja nie jest wdrażana pod subpath GitHub Pages)
+- **React Router** — routing rozdziałów/lekcji, `basename="/sniper"` (aplikacja
+  wdrażana pod subpath GitHub Pages `https://cirno1337.github.io/sniper/`);
+  `vite.config.ts` ma odpowiadające `base: '/sniper/'`
 - **Tailwind CSS** — stylowanie
 - **localStorage** — zapis postępu użytkownika (bez backendu)
-- Brak CI/CD do wdrożenia — repo na GitHubie służy wyłącznie jako backup/historia (`git push` do prywatnego repo, bez Actions/Pages)
+- **CI/CD**: `.github/workflows/deploy.yml` — build (`npm ci && npm run build`)
+  i deploy na GitHub Pages przy każdym push na `main`
 
 ## Model danych treści
 
@@ -256,10 +266,17 @@ dalsze prace to już rozszerzenia ponad plan, nie zaległości.
   wyszukiwarka pełnotekstowa po treści lekcji. Zaimplementowane:
   `Layout.tsx` (drawer mobile), `SearchBox.tsx` + `src/lib/search.ts`,
   poprawki a11y w `index.css`/`QuizRunner`/`FlashcardDeck`/`ProgressBar`.
-- **Faza 7 — Repo GitHub (prywatne, backup)**: `git init`, `.gitignore`
-  (`node_modules`, `dist`), utworzenie prywatnego repo przez
-  `gh repo create --private`, pierwszy push. Bez Pages, bez Actions — repo
-  służy wyłącznie jako historia zmian i backup kodu.
+- **Faza 7 — Repo GitHub** ✅: `git init`, `.gitignore` (`node_modules`,
+  `dist`), pierwszy push. Repo utworzone jako prywatne (backup/historia).
+- **Faza 8 — Publikacja GitHub Pages** ✅ (2026-09-22): decyzja z Fazy 7
+  świadomie zmieniona na prośbę użytkownika. Przed upublicznieniem repo
+  usunięto z całej historii gita plik `FM3-05.222(03).pdf` (przepisanie
+  historii przez `git-filter-repo`, force-push), dodano go do `.gitignore`.
+  Repo przełączone na publiczne (`gh repo edit --visibility public`), dodano
+  `.github/workflows/deploy.yml` (build + `actions/deploy-pages`), ustawiono
+  `base`/`basename` na `/sniper` (Vite + React Router) pod subpath Pages,
+  włączono GitHub Pages z źródłem „GitHub Actions”. Adres:
+  `https://cirno1337.github.io/sniper/`.
 
 ## Zasady pracy nad treścią
 

@@ -7,7 +7,7 @@ import { ProgressProvider } from './context/ProgressContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/sniper">
       <ProgressProvider>
         <App />
       </ProgressProvider>

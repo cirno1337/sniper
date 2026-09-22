@@ -15,6 +15,9 @@ dist-ssr
 # surowy tekst wyciągnięty z PDF — narzędzie robocze, nieużywane w buildzie
 raw/
 
+# źródłowy PDF ma klauzulę ograniczonej dystrybucji — nie publikować w repo
+FM3-05.222(03).pdf
+
 # stan lokalny harnessu Claude Code
 .claude/
 
